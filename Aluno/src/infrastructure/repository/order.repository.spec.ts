@@ -10,6 +10,7 @@ import ProductRepository from "./product.repository";
 import Product from "../../domain/entity/product";
 import OrderItem from "../../domain/entity/order_item";
 import Order from "../../domain/entity/order";
+import OrderRepository from "./order.repository";
 
 describe("Order repository test", () => {
     let sequelize: Sequelize;
@@ -68,6 +69,7 @@ describe("Order repository test", () => {
                     price: orderItem.price,
                     quantity: orderItem.quantity,
                     order_id: "123",
+                    product_id: "123"
                 }
             ],
         });

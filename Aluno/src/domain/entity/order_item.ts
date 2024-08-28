@@ -13,6 +13,10 @@ export default class OrderItem {
         this._quantity = quantity;
     }
 
+    get productId(): string {
+        return this._productId;
+    }
+
     get id(): string {
         return this._id;    
     }
