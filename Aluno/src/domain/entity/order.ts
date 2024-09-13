@@ -1,57 +1,53 @@
 import OrderItem from "./order_item";
 
 export default class Order {
-    private _id: string;
-    private _customerId: string;
-    private _items: OrderItem[];
-    private _total: number;
+  private _id: string;
+  private _customerId: string;
+  private _items: OrderItem[];
+  private _total: number;
 
-    constructor(id: string, customerId: string, items: OrderItem[]) {
-        this._id = id;;
-        this._customerId = customerId;
-        this._items = items;
-        this._total = this.total();
-        this.validate();
-    }
+  constructor(id: string, customerId: string, items: OrderItem[]) {
+    this._id = id;
+    this._customerId = customerId;
+    this._items = items;
 
-    get id(): string {
-        return this._id;
-    }
+    this.validate();
+    
+    this._total = this.total();
+  }
 
-    get customerId(): string {
-        return this._customerId;
-    }
+  get id(): string {
+    return this._id;
+  }
 
-    get items(): OrderItem[] {
-        return this._items;
-    }
+  get customerId(): string {
+    return this._customerId;
+  }
 
-    validate(): boolean {
-        if (this._id.length === 0) {
-            throw new Error("Id is required");
-        }
-        if (this._customerId.length === 0) {
-            throw new Error("CustomerId is required");
-        }
-        if (this._items.length === 0) {
-            throw new Error("Items are required");
-        }
-        if (this._items.some(i => i.quantity <= 0)) {
-            throw new Error("Quantity must be greater than 0");
-        }
-        
-        return true;
-    }
+  get items(): OrderItem[] {
+    return this._items;
+  }
 
-    total(): number {
-        return this,this._items.reduce((acc, item) => acc + item.price, 0);
+  changeItems(items: OrderItem[]): void {
+    this._items = items;
+  }
+  
+  validate() {
+    if (this._id.length === 0) {
+      throw new Error("Id is required");
     }
+    if (this._customerId.length === 0) {
+      throw new Error("CustomerId is required");
+    }
+    if (this._items.length === 0) {
+      throw new Error("Items are required");
+    }
+    if (this._items.some(item => item.quantity <= 0)) {
+      throw new Error("Quantity must be greater than 0");
+    }
+  }
 
-    changeItems(item: OrderItem[]) {
-        this._items = item;
-    }
-
-    changeTotal(total: number) {
-        this._total = total;
-    }
+  total(): number {
+    return this._items.reduce((acc, item) => acc + (item.total), 0);
+  }
 }
