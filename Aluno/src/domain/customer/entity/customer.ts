@@ -1,7 +1,7 @@
-import EventDispatcherInterface from "../@shared/event-dispatcher.interface";
-import CustomerChangeAddressEvent from "../../event/customer-change-address.event";
+import EventDispatcherInterface from "../../@shared/event/event-dispatcher.interface";
+import CustomerChangeAddressEvent from "../event/customer-change-address.event";
 import CustomerCreatedEvent from "../event/customer-created.event";
-import Address from "../../entity/address";
+import Address from "../value-object/address";
 
 export default class Customer {
     private _id: string;

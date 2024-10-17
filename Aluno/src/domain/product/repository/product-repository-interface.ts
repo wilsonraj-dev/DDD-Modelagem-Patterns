@@ -1,4 +1,4 @@
-import Product from "../product/entity/product";
-import RepositoryInterface from "./repository-interface";
+import RepositoryInterface from "../../@shared/event/repository/repository-interface";
+import Product from "../entity/product";
 
 export default interface ProductRepositoryInterface extends RepositoryInterface<Product> {}

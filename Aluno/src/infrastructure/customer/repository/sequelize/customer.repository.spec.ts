@@ -1,27 +1,27 @@
 import { Sequelize } from "sequelize-typescript"
-import CustomerModel from "../db/sequelize/model/customer.model";
-import Customer from "../../domain/customer/entity/customer";
-import Address from "../../domain/entity/address";
+import CustomerModel from "./customer.model";
 import CustomerRepository from "./customer.repository";
+import Customer from "../../../../domain/customer/entity/customer";
+import Address from "../../../../domain/customer/value-object/address";
 
 describe("Customer repository teste", () => {
     let sequelize: Sequelize;
 
-    beforeEach(async() => {
-        sequelize = new Sequelize({
-            dialect: "sqlite",
-            storage: ":memory",
-            logging: false,
-            sync: { force: true }
-        });
-
-        await sequelize.addModels([CustomerModel]);
-        await sequelize.sync();
+  beforeEach(async () => {
+    sequelize = new Sequelize({
+      dialect: "sqlite",
+      storage: ":memory:",
+      logging: false,
+      sync: { force: true },
     });
 
-    afterEach(async () => {
-        await sequelize.close();
-    });
+    await sequelize.addModels([CustomerModel]);
+    await sequelize.sync();
+  });
+
+  afterEach(async () => {
+    await sequelize.close();
+  });
 
     it("should create a customer", async () => {
         const customerRepository = new CustomerRepository();
@@ -36,6 +36,7 @@ describe("Customer repository teste", () => {
             name: customer.name,
             active: customer.isActive(),
             rewardPoints: customer.rewardPoints,
+            number: address.number,
             street: address.street,
             zipcode: address.zip,
             city: address.city
@@ -58,6 +59,7 @@ describe("Customer repository teste", () => {
             name: customer.name,
             active: customer.isActive(),
             rewardPoints: customer.rewardPoints,
+            number: address.number,
             street: address.street,
             zipcode: address.zip,
             city: address.city
