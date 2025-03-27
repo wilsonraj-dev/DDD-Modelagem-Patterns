@@ -1,8 +1,17 @@
 {
   "devDependencies": {
-    "@types/jest": "^29.5.14"
+    "@swc/jest": "^0.2.37",
+    "@types/jest": "^29.5.14",
+    "jest": "^29.7.0",
+    "sqlite3": "^5.1.7",
+    "ts-jest": "^29.3.0",
+    "ts-node": "^10.9.2"
   },
   "dependencies": {
     "sequelize-typescript": "^2.1.6"
+  },
+  "scripts": {
+    "test": "jest",
+    "preset": "ts-jest"
   }
 }
