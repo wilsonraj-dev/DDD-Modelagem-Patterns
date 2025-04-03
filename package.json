@@ -9,6 +9,9 @@
     "ts-node": "^10.9.2"
   },
   "dependencies": {
+    "@types/express": "^5.0.1",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
     "sequelize-typescript": "^2.1.6"
   },
   "scripts": {
