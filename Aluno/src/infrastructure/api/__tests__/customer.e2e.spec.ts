@@ -11,7 +11,7 @@ describe("E2E test for customer", () => {
         await sequelize.close();
     })
 
-    it("shoul create a customer", async () => {
+    it("should create a customer", async () => {
         const response = await request(app)
         .post("/customer")
         .send({
@@ -30,5 +30,15 @@ describe("E2E test for customer", () => {
         expect(response.body.address.city).toBe("City");
         expect(response.body.address.number).toBe(123);
         expect(response.body.address.zip).toBe("12345");
+    });
+
+    it("should not create a customer", async () => {
+        const response = await request(app)
+        .post("/customer")
+        .send({
+            name: "John"
+        });
+
+        expect(response.status).toBe(500);
     });
 });
