@@ -16,7 +16,8 @@
     "dotenv": "^16.4.7",
     "express": "^5.1.0",
     "nodemon": "^3.1.9",
-    "sequelize-typescript": "^2.1.6"
+    "sequelize-typescript": "^2.1.6",
+    "yup": "^1.6.1"
   },
   "scripts": {
     "test": "jest",
