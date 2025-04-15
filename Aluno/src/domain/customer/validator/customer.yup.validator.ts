@@ -4,7 +4,6 @@ import * as yup from "yup";
 
 export default class CustomerYupValidator implements ValidatorInterface<Customer> {
     validate(entity: Customer): void {
-
         try {
             yup.object()
                 .shape({
