@@ -21,8 +21,18 @@ export default class ProductB implements ProductInterface {
         return this._name;
     }
 
+    changeProductName(name: string): void {
+        this._name = name;
+        this.validate();
+    }
+
     get price(): number {
-        return this._price * 2;
+        return this._price;
+    }
+
+    changeProductPrice(price: number): void {
+        this._price = price;
+        this.validate();
     }
 
     validate(): boolean {

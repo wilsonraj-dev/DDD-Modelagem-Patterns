@@ -21,10 +21,20 @@ export default class Product implements ProductInterface {
         return this._name;
     }
 
+    changeProductName(name: string): void {
+        this._name = name;
+        this.validate();
+    }
+
     get price(): number {
         return this._price;
     }
 
+    changeProductPrice(price: number): void {
+        this._price = price;
+        this.validate();
+    }
+    
     validate(): boolean {
         if (this._id.length === 0) {
             throw new Error("Id is required");
